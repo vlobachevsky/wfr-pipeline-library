@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+#!groovy
 
 // vars/checkoutSVN.groovy
 
