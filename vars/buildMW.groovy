@@ -8,7 +8,8 @@ def call() {
         $year = Get-Date -Format yyyy
         $month = Get-Date -Format MM
 
-        $text = "using System;
+        $text = "
+        using System;
         using System.Reflection;
 
         [assembly: AssemblyVersion(`"6.52.$year.$month`")]
