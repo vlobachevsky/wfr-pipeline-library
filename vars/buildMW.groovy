@@ -21,6 +21,7 @@ def call() {
 
         $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
     ''')
+    println stdout
 
     bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
 }
