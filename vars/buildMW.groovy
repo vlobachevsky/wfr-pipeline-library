@@ -3,7 +3,7 @@
 def call() {
     bat 'ant BuildEclipseCompiler SetProperties'
     //powershell 'Write-Output "Hello, World!"'
-    def stdout = powershell(returnStdout: true, script: '''
+    powershell '''
         $path = $ENV:WORKSPACE
         $year = Get-Date -Format yyyy
         $month = Get-Date -Format MM
@@ -19,10 +19,8 @@ def call() {
         [assembly: AssemblyCopyright(`"Copyright (c) 1996-$year Kronos Inc`")]
         [assembly: CLSCompliant(true)]"
 
-        Write-Output $text
         $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
-    ''')
-    println stdout
+    '''
 
     bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
 }
