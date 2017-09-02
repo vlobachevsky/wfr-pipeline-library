@@ -8,7 +8,7 @@ def call() {
         $year = Get-Date -Format yyyy
         $month = Get-Date -Format MM
 
-        $text = @"
+        $text = "
         using System;
         using System.Reflection;
 
@@ -22,8 +22,7 @@ def call() {
 
         Write-Output $text
         $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs
-        "@
-
+        "
     ''')
     println stdout
 
