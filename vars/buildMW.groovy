@@ -4,7 +4,7 @@ def call() {
     bat 'ant BuildEclipseCompiler SetProperties'
     //powershell 'Write-Output "Hello, World!"'
     def stdout = powershell(returnStdout: true, script: '''
-        $path = $ENV:WORKSPACE
+        Write-Output 'Hello, World!'
     ''')
     println stdout
 
