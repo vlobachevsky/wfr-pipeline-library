@@ -2,5 +2,6 @@
 
 def call() {
     bat 'ant BuildEclipseCompiler SetProperties'
-    powershell 'Write-Output "Hello, World!"'
+    //powershell 'Write-Output "Hello, World!"'
+    bat 'MSBuild -Version'
 }
