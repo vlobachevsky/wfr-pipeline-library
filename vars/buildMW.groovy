@@ -8,8 +8,7 @@ def call() {
         $year = Get-Date -Format yyyy
         $month = Get-Date -Format MM
 
-        $text = "
-        using System;
+        $text = "using System;
         using System.Reflection;
 
         [assembly: AssemblyVersion(`"6.52.$year.$month`")]
@@ -21,8 +20,7 @@ def call() {
         [assembly: CLSCompliant(true)]"
 
         Write-Output $text
-        $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs
-        "
+        $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
     ''')
     println stdout
 
