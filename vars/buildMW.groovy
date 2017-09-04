@@ -2,7 +2,7 @@
 
 
 def call() {
-    def msbuild = "${tool 'MSBuild-Default'}"
+    def msbuild = "\"${tool 'MSBuild-Default'}\""
 
     // Compile PunchMW
     bat 'ant BuildEclipseCompiler SetProperties'
