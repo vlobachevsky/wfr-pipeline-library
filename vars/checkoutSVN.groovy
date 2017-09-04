@@ -14,6 +14,7 @@ def call(body) {
     def localDir = config.localDir ?: '.'
     def depthOption = conif.depthOption ?: 'infinity'
 
+/*
     checkout([
       $class: 'SubversionSCM',
       locations: [[
@@ -25,6 +26,7 @@ def call(body) {
       ]],
       workspaceUpdater: [$class: 'UpdateWithRevertUpdater']
     ])
+*/    
 }
 
 /*
