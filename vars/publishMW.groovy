@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 
 def call(String repo) {
+    echo "$MiddlewarePath"
+/*
     powershell '''
         .\\zip.cmd
         $mwSource = 'c:\\MW'
@@ -14,4 +16,5 @@ def call(String repo) {
         Copy-Item c:\\MW.zip -Destination $mwZipPath -Force
         Copy-Item c:\\MW.zip -Destination $mwExePath -Force
     '''
+*/    
 }
