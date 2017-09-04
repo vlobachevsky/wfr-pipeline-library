@@ -4,17 +4,10 @@
 def call() {
     def msbuild = "${tool 'MSBuild-Default'}"
 
-    compileMW()
-    makeAssemblyInfo()
-    compileAC()
-}
-
-
-private compileMW() {
+    // Compile PunchMW
     bat 'ant BuildEclipseCompiler SetProperties'
-}
 
-private makeAssemblyInfo() {
+    // Assembly Access Control info
     powershell '''
         $path = $ENV:WORKSPACE
         $year = Get-Date -Format yyyy
@@ -33,9 +26,6 @@ private makeAssemblyInfo() {
 
         $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
     '''
-}
-
-private compileAC() {
-    // bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
+    // Compile Access Control. MS Build Tools are required
     bat "${msbuild} /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
 }
