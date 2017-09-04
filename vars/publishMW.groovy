@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 def call(String repo) {
+    echo 'Debug...'
     echo "$MiddlewarePath"
 /*
     powershell '''
@@ -16,5 +17,5 @@ def call(String repo) {
         Copy-Item c:\\MW.zip -Destination $mwZipPath -Force
         Copy-Item c:\\MW.zip -Destination $mwExePath -Force
     '''
-*/    
+*/
 }
