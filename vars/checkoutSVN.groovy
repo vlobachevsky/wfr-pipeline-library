@@ -24,7 +24,6 @@ def call(Map params = [:]) {
     def url = params.containsKey('url')
     def localDir = params.containsKey('localDir') ?: '.'
     def depthOption = params.containsKey('depthOption') ?: 'infinity'
-    echo "credentialsId: $credentialsId"
 
 /*
     checkout([
