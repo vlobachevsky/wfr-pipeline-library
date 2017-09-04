@@ -19,17 +19,11 @@ def call(String credentialsId, String url, String localDir = '.', String depthOp
 */
 
 def call(Map params = [:]) {
-    println params
     def credentialsId = params.'credentialsId'
     def url = params.'url'
     def localDir = params.'localDir' ?: '.'
     def depthOption = params.'depthOption' ?: 'infinity'
-    echo "credentialsId: $credentialsId"
-    echo "url: $url"
-    echo "localDir: $localDir"
-    echo "depthOption: $depthOption"
 
-/*
     checkout([
       $class: 'SubversionSCM',
       locations: [[
@@ -41,6 +35,5 @@ def call(Map params = [:]) {
       ]],
       workspaceUpdater: [$class: 'UpdateWithRevertUpdater']
     ])
-*/
 
 }
