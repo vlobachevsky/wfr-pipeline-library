@@ -2,7 +2,9 @@
 
 def call() {
     compileMW()
-    //powershell 'Write-Output "Hello, World!"'
+    makeAssemblyInfo()
+
+
     powershell '''
         $path = $ENV:WORKSPACE
         $year = Get-Date -Format yyyy
