@@ -3,8 +3,7 @@
 def call() {
     compileMW()
     makeAssemblyInfo()
-
-    bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
+    compileAC()
 }
 
 private compileMW() {
@@ -30,4 +29,8 @@ private makeAssemblyInfo() {
 
         $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
     '''
+}
+
+private compileAC() {
+    bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
 }
