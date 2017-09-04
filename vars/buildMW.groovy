@@ -27,6 +27,6 @@ def call() {
     bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
 }
 
-private def compileMW() {
+private compileMW() {
     bat 'ant BuildEclipseCompiler SetProperties'
 }
