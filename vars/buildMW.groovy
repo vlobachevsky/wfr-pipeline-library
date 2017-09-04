@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 def call() {
-    bat 'ant BuildEclipseCompiler SetProperties'
+    compileMW()
     //powershell 'Write-Output "Hello, World!"'
     powershell '''
         $path = $ENV:WORKSPACE
@@ -23,4 +23,8 @@ def call() {
     '''
 
     bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
+}
+
+private def compileMW() {
+    bat 'ant BuildEclipseCompiler SetProperties'
 }
