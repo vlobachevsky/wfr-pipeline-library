@@ -19,6 +19,7 @@ def call(String credentialsId, String url, String localDir = '.', String depthOp
 */
 
 def call(Map params = [:]) {
+    println params
     def credentialsId = params.containsKey('credentialsId')
     def url = params.containsKey('url')
     def localDir = params.containsKey('localDir') ?: '.'
