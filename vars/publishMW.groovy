@@ -7,7 +7,7 @@ def call(String repo) {
         $mwZipPath = $env:MiddlewarePath + 'MW.zip'
         $mwExePath = $env:MiddlewarePath + 'MW.ex_'
 
-        Write-Host 'Path is: '$mwZipPath
+        Write-Output 'Path is: '$mwZipPath
 
         CScript .\\zip.vbs $mwSource 'c:\\MW.zip'
 
