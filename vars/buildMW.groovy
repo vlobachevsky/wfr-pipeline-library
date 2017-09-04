@@ -1,8 +1,9 @@
 #!/usr/bin/env groovy
 
-def msbuild = "${tool 'MSBuild-Default'}"
 
 def call() {
+    def msbuild = "${tool 'MSBuild-Default'}"
+
     compileMW()
     makeAssemblyInfo()
     compileAC()
