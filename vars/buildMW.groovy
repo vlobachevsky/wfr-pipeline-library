@@ -4,7 +4,14 @@ def call() {
     compileMW()
     makeAssemblyInfo()
 
+    bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
+}
 
+private compileMW() {
+    bat 'ant BuildEclipseCompiler SetProperties'
+}
+
+private makeAssemblyInfo() {
     powershell '''
         $path = $ENV:WORKSPACE
         $year = Get-Date -Format yyyy
@@ -23,10 +30,4 @@ def call() {
 
         $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
     '''
-
-    bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
-}
-
-private compileMW() {
-    bat 'ant BuildEclipseCompiler SetProperties'
 }
