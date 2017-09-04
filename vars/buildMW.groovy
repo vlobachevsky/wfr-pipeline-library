@@ -1,10 +1,13 @@
 #!/usr/bin/env groovy
 
+def msbuild = "${tool 'MSBuild-Default'}"
+
 def call() {
     compileMW()
     makeAssemblyInfo()
     compileAC()
 }
+
 
 private compileMW() {
     bat 'ant BuildEclipseCompiler SetProperties'
@@ -32,5 +35,6 @@ private makeAssemblyInfo() {
 }
 
 private compileAC() {
-    bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
+    // bat "\"${tool 'MSBuild-Default'}\" /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
+    bat "${msbuild} /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
 }
