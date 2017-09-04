@@ -17,11 +17,11 @@ def call(body) {
     checkout([
       $class: 'SubversionSCM',
       locations: [[
-        credentialsId: "$credentialsId",
-        depthOption: "$depthOption",
+        credentialsId: "${credentialsId}",
+        depthOption: "${depthOption}",
         ignoreExternalsOption: true,
-        local: "$localDir",
-        remote: "$url"
+        local: "${localDir}",
+        remote: "${url}"
       ]],
       workspaceUpdater: [$class: 'UpdateWithRevertUpdater']
     ])
