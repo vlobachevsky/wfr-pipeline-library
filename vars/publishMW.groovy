@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call() {
+def call(String repo) {
     powershell '''
         .\\zip.cmd
         $mwSource = 'c:\MW'
