@@ -5,17 +5,17 @@ def call(Map params = [:]) {
 
 //    echo 'Debug...'
 //    echo "$repo"
-    powershell '''
+    powershell """
         .\\zip.cmd
-        $mwSource = 'c:\\MW'
-        $mwZipPath = '\\\\epbyminw1044.minsk.epam.com\\wfr-artifactory\\' + 'MW.zip'
-        $mwExePath = '\\\\epbyminw1044.minsk.epam.com\\wfr-artifactory\\' + 'MW.ex_'
+        \$mwSource = 'c:\\MW'
+        \$mwZipPath = '\\\\epbyminw1044.minsk.epam.com\\wfr-artifactory\\' + 'MW.zip'
+        \$mwExePath = '\\\\epbyminw1044.minsk.epam.com\\wfr-artifactory\\' + 'MW.ex_'
 
-        Write-Output 'Path is: '$mwZipPath
+        Write-Output 'Path is: '\$mwZipPath
 
-        CScript .\\zip.vbs $mwSource 'c:\\MW.zip'
+        CScript .\\zip.vbs \$mwSource 'c:\\MW.zip'
 
-        Copy-Item c:\\MW.zip -Destination $mwZipPath -Force
-        Copy-Item c:\\MW.zip -Destination $mwExePath -Force
-    '''
+        Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
+        Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
+    """
 }
