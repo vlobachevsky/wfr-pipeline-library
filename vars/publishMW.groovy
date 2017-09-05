@@ -1,8 +1,10 @@
 #!/usr/bin/env groovy
 
-def call(String repo) {
+def call(Map params = [:]) {
+    def repo = params.repo
+
     echo 'Debug...'
-    echo "$MiddlewarePath"
+    echo "$repo"
 /*
     powershell '''
         .\\zip.cmd
