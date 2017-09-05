@@ -8,8 +8,8 @@ def call(Map params = [:]) {
     powershell """
         .\\zip.cmd
         \$mwSource = 'c:\\MW'
-        \$mwZipPath = ${repo} + 'MW.zip'
-        \$mwExePath = ${repo} + 'MW.ex_'
+        \$mwZipPath = '${repo}' + 'MW.zip'
+        \$mwExePath = '${repo}' + 'MW.ex_'
 
         Write-Output 'Path is: '\$mwZipPath
 
