@@ -3,14 +3,13 @@
 def call(Map params = [:]) {
     def repo = params.repo
 
-    echo 'Debug...'
-    echo "$repo"
-/*
+//    echo 'Debug...'
+//    echo "$repo"
     powershell '''
         .\\zip.cmd
         $mwSource = 'c:\\MW'
-        $mwZipPath = $env:MiddlewarePath + 'MW.zip'
-        $mwExePath = $env:MiddlewarePath + 'MW.ex_'
+        $mwZipPath = '\\\\epbyminw1044\\wfr-artifactory' + 'MW.zip'
+        $mwExePath = '\\\\epbyminw1044\\wfr-artifactory' + 'MW.ex_'
 
         Write-Output 'Path is: '$mwZipPath
 
@@ -19,5 +18,4 @@ def call(Map params = [:]) {
         Copy-Item c:\\MW.zip -Destination $mwZipPath -Force
         Copy-Item c:\\MW.zip -Destination $mwExePath -Force
     '''
-*/
 }
