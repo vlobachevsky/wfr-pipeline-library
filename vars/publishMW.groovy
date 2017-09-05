@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
+// TODO: Too many technologies used (cmd, vb, powershell). Needs to be refactored.
+
 def call(Map params = [:]) {
     def repo = params.repo
 
