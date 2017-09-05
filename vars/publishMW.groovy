@@ -3,8 +3,6 @@
 def call(Map params = [:]) {
     def repo = params.repo
 
-//    echo 'Debug...'
-//    echo "$repo"
     powershell """
         .\\zip.cmd
         \$mwSource = 'c:\\MW'
