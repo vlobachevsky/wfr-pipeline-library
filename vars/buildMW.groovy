@@ -24,7 +24,7 @@ def call() {
         [assembly: AssemblyCopyright(`"Copyright (c) 1996-$year Kronos Inc`")]
         [assembly: CLSCompliant(true)]"
 
-        $text | Set-Content "$path\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
+        $text | Set-Content "$path\\PunchMW\\src\\AccessControl\\Global\\GlobalAssemblyInfo.cs"
     '''
     // Compile Access Control. MS Build Tools are required
     bat "${msbuild} /p:Configuration=Release /p:Platform=\"Any CPU\" /t:Rebuild ${WORKSPACE}\\src\\AccessControl\\Build\\Build.xml"
