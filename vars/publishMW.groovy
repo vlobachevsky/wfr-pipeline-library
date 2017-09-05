@@ -6,6 +6,7 @@ def call(Map params = [:]) {
     def repo = params.repo
 
     powershell """
+        CD .\\PunchMW
         .\\zip.cmd
         \$mwSource = 'c:\\MW'
         \$mwZipPath = '${repo}' + 'MW.zip'
