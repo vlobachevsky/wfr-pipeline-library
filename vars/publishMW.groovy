@@ -5,7 +5,7 @@
 def call(Map params = [:]) {
     def repo = params.repo
 
-    powershell """
+    def status = powershell(returnStatus: true, script: """
         CD .\\PunchMW
         .\\zip.cmd
         \$mwSource = 'c:\\MW'
@@ -18,5 +18,8 @@ def call(Map params = [:]) {
 
         Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
         Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
-    """
+    """)
+    if (status != 0) {
+        powershell 'exit $LastExitCode'
+    }
 }
