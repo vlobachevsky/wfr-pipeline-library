@@ -30,20 +30,16 @@ def call(Map params = [:]) {
         \$mwExePath = '${repo}' + 'MW.ex_'
 
         Write-Output 'Path is: '\$mwZipPath
-        Write-Output 'Sanity Check'
         
         CScript .\\zip.vbs \$mwSource 'c:\\MW.zip'
 
-        Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
-        Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
-
-        Write-Output 'Return: '\$?
-
-        if (\$?) {
-            exit 0 
-        } else {
-            exit 1
+        if (Test-Path \$mwZipPath) {
+            Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
         }
+        if (Test-Path \$mwExePath) {
+            Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
+        }
+        exit \$lastExitCode
     """)
 
     echo "Status: ${status}"
