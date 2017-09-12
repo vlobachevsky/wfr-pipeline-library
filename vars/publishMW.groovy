@@ -28,6 +28,6 @@ def call(Map params = [:]) {
 
     echo "Status: ${status}"
     if (status != 0) {
-        return status
+        error "Publish MW step failed."
     }
 }
