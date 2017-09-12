@@ -65,7 +65,6 @@ def call(Map params = [:]) {
             Write-Output 'Cannot find path: ${repo}'
             Exit 1
         }
-        Write-Output 'Sanity Check'
         
         CD .\\PunchMW
         .\\zip.cmd
@@ -79,6 +78,8 @@ def call(Map params = [:]) {
 
         Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
         Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
+        
+        Exit \$LastExitCode
     """)
 
     echo "Status: ${status}"
