@@ -30,6 +30,7 @@ def call(Map params = [:]) {
         \$mwExePath = '${repo}' + 'MW.ex_'
 
         Write-Output 'Path is: '\$mwZipPath
+        Write-Output 'Sanity Check'
         
         CScript .\\zip.vbs \$mwSource 'c:\\MW.zip'
 
