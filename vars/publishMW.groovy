@@ -25,7 +25,7 @@ def call(Map params = [:]) {
     def status = powershell(returnStatus: true, script: """
         if (Test-Path '${repo}') {
             Write-Output 'Cannot find path: ${repo}'
-            Exit 1
+            exit 1
         }
 
         CD .\\PunchMW
@@ -41,7 +41,7 @@ def call(Map params = [:]) {
         Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
         Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
 
-        Exit \$LastExitCode
+        exit \$LastExitCode
     """)
 
     if (status != 0) {
