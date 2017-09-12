@@ -23,7 +23,8 @@ def call(Map params = [:]) {
     """)
 */
     def status = powershell(returnStatus: true, script: """
-        CD .\\\\PunchMW
+        CD .\\PunchMW
+        .\\zip2.cmd
         Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
         exit \$LastExitCode
     """)
