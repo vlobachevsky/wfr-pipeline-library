@@ -82,7 +82,6 @@ def call(Map params = [:]) {
         Exit \$LastExitCode
     """)
 
-    echo "Status: ${status}"
     if (status != 0) {
         error "Publish MW step failed."
     }
