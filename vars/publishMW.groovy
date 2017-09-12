@@ -25,7 +25,7 @@ def call(Map params = [:]) {
     def status = powershell(returnStatus: true, script: """
         if (Test-Path '${repo}') {
             Write-Output 'Cannot find path: ${repo}'
-            exit 1
+            Exit 1
         }
 
         CD .\\PunchMW
@@ -38,22 +38,12 @@ def call(Map params = [:]) {
         
         CScript .\\zip.vbs \$mwSource 'c:\\MW.zip'
 
-        if (Test-Path \$mwZipPath) {
-            Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
-        } else {
-            Write-Output 'Cannot find path: '\$mwZipPath
-            exit 1
-        }
-        if (Test-Path \$mwExePath) {
-            Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
-        } else {
-            Write-Output 'Cannot find path: '\$mwExePath
-            exit 1
-        }
-        exit \$LastExitCode
+        Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
+        Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
+
+        Exit \$LastExitCode
     """)
 
-    echo "Status: ${status}"
     if (status != 0) {
         error "Publish MW step failed."
     }
