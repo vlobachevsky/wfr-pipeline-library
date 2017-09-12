@@ -38,6 +38,9 @@ def call(Map params = [:]) {
         
         CScript .\\zip.vbs \$mwSource 'c:\\MW.zip'
 
+        Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
+        Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
+
         if (Test-Path \$mwZipPath) {
             Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
         } else {
