@@ -37,7 +37,7 @@ def call(Map params = [:]) {
         Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
 
         if (\$?) {
-            exit 1
+            exit 1 
         } else {
             exit 0
         }
