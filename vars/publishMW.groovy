@@ -36,12 +36,12 @@ def call(Map params = [:]) {
         if (Test-Path \$mwZipPath) {
             Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
         } else {
-            Write-Output 'Can't find path: '\$mwZipPath
+            Write-Output 'Cannot find path: '\$mwZipPath
         }
         if (Test-Path \$mwExePath) {
             Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
         } else {
-            Write-Output 'Can't find path: '\$mwExePath
+            Write-Output 'Cannot find path: '\$mwExePath
         }
         exit \$LastExitCode
     """)
