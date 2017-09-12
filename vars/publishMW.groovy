@@ -22,10 +22,12 @@ def call(Map params = [:]) {
         exit 1
     """)
 */
+
+/*
     def status = powershell(returnStatus: true, script: """
         if (Test-Path '${repo}') {
             Write-Output 'Cannot find path: ${repo}'
-            Exit 
+            Exit
         }
         Write-Output 'Sanity Check'
 
@@ -36,7 +38,7 @@ def call(Map params = [:]) {
         \$mwExePath = '${repo}' + 'MW.ex_'
 
         Write-Output 'Path is: '\$mwZipPath
-        
+
         CScript .\\zip.vbs \$mwSource 'c:\\MW.zip'
 
         Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
@@ -55,6 +57,15 @@ def call(Map params = [:]) {
             exit 1
         }
         exit \$LastExitCode
+    """)
+*/
+
+    def status = powershell(returnStatus: true, script: """
+        if (Test-Path '${repo}') {
+            Write-Output 'Cannot find path: ${repo}'
+            Exit 
+        }
+        Write-Output 'Sanity Check'
     """)
 
     echo "Status: ${status}"
