@@ -38,12 +38,22 @@ def call(Map params = [:]) {
         
         CScript .\\zip.vbs \$mwSource 'c:\\MW.zip'
 
-        Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
-        Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
-
+        if (Test-Path \$mwZipPath) {
+            Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
+        } else {
+            Write-Output 'Cannot find path: '\$mwZipPath
+            exit 1
+        }
+        if (Test-Path \$mwExePath) {
+            Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
+        } else {
+            Write-Output 'Cannot find path: '\$mwExePath
+            exit 1
+        }
         exit \$LastExitCode
     """)
 
+    echo "Status: ${status}"
     if (status != 0) {
         error "Publish MW step failed."
     }
