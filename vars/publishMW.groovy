@@ -36,7 +36,11 @@ def call(Map params = [:]) {
         Copy-Item c:\\MW.zip -Destination \$mwZipPath -Force
         Copy-Item c:\\MW.zip -Destination \$mwExePath -Force
 
-        exit \$LastExitCode
+        if (\$?) {
+            exit 1
+        } else {
+            exit 0
+        }
     """)
 
     echo "Status: ${status}"
