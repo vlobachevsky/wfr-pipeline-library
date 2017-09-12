@@ -25,7 +25,7 @@ def call(Map params = [:]) {
     def status = powershell(returnStatus: true, script: """
         if (Test-Path '${repo}') {
             Write-Output 'Cannot find path: ${repo}'
-            exit 1
+            Exit
         }
 
         CD .\\PunchMW
