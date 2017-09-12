@@ -23,7 +23,7 @@ def call(Map params = [:]) {
     """)
 */
     def status = powershell(returnStatus: true, script: """
-        exit 1
+        exit 0
     """)
 
     echo "Status: ${status}"
