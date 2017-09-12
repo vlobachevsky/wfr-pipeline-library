@@ -65,6 +65,7 @@ def call(Map params = [:]) {
             Write-Output 'Cannot find path: ${repo}'
             Exit 1
         }
+        Write-Output 'Sanity Check'
     """)
 
     echo "Status: ${status}"
