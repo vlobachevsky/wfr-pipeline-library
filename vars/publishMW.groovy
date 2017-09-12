@@ -23,7 +23,8 @@ def call(Map params = [:]) {
     """)
 */
     def status = powershell(returnStatus: true, script: """
-        exit 0
+        CD .\\\\PunchMW
+        exit \$LastExitCode
     """)
 
     echo "Status: ${status}"
