@@ -28,6 +28,6 @@ def call(Map params = [:]) {
     """)
 
     if (status != 0) {
-        error "Publish MW step failed."
+        error "Publish MW step has been failed."
     }
 }
