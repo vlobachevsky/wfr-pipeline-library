@@ -2,12 +2,10 @@
 
 
 def call() {
-//    def ant = "\"${tool 'Ant 1.9.6'}\""
     def msbuild = "\"${tool 'MSBuild-Default'}\""
 
     // Compile PunchMW
     bat 'ant BuildEclipseCompiler SetProperties'
-//    bat "${ant} BuildEclipseCompiler SetProperties"
 
     // Assembly Access Control info
     powershell '''
