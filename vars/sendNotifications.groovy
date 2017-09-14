@@ -5,9 +5,10 @@ def call(Map params = [:]) {
     def subject = params.subject ?: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}!"
     def body = params.body ?: "$env.DEFAULT_CONTENT"
 
-    emailext(
+    emailext (
         to: to,
         subject: subject,
-        body: body
+        body: body,
+        mimeType: 'text/html'
     )
 }
