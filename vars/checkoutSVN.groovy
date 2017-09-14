@@ -3,7 +3,7 @@
 // vars/checkoutSVN.groovy
 
 def call(Map params = [:]) {
-    def credentialsId = params.credentialsId
+    def credentialsId = params.credentialsId ?: infra.getSVNCredentialsId()
     def url = params.url
     def localDir = params.localDir ?: '.'
     def depthOption = params.depthOption ?: 'infinity'
