@@ -14,7 +14,7 @@
 
 def call(Map params = [:]) {
     //def buildStatus = params.buildStatus
-    echo "Current Build Result: " + params.buildStatus
+    echo "Current Build Result: " + currentBuild.currentResult
 
     def subject = params.subject ?: '${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!'
 
