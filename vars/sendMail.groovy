@@ -14,7 +14,7 @@
 
 def call(Map params = [:]) {
 //    def subject = params.subject ? params.subject : "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result}!"
-    def subject = '${DEFAULT_REPLYTO}'
+    def subject = '${PROJECT_NAME}'
 
 //    def content = '${JELLY_SCRIPT,template="static-analysis"}'
     def content = '<p>${DEFAULT_REPLYTO}</p><p>${JELLY_SCRIPT,template="html"}</p><p>${FAILED_TESTS}</p>'
