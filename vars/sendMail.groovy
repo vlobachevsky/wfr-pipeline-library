@@ -3,7 +3,7 @@
 /**
  * vars/sendMail.groovy
  *
- * This function uses emailext (https://wiki.jenkins.io/display/JENKINS/Email-ext+plugin) to send an email
+ * This function uses emailext step (https://wiki.jenkins.io/display/JENKINS/Email-ext+plugin) to send an email
  * - Email is sent in html format
  *
  * @param to            [env.PROJECT_RECIPIENT_LIST | string]							        The email recipients
