@@ -13,6 +13,8 @@
  */
 
 def call(Map params = [:]) {
+    echo 'DEFAULT_REPLYTO: $DEFAULT_REPLYTO'
+
     def subject = params.subject ? params.subject : "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result}!"
     def content = '${JELLY_SCRIPT,template="static-analysis"}'
     def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.result != "SUCCESS") // Attach buildlog when the build is not successfull
