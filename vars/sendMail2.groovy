@@ -12,18 +12,24 @@
  *
  */
 
-def call(Map params = [:]) {
-    def subject = params.subject ? params.subject : "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result}!"
+def call(body) {
+    // evaluate the body block, and collect configuration into the object
+    def config = [:]
+    body.resolveStrategy = Closure.DELEGATE_FIRST
+    body.delegate = config
+    body()
+
+    def subject = config.subject ? config.subject : "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result}!"
     def content = '${JELLY_SCRIPT,template="static-analysis"}'
-    def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.result != "SUCCESS") // Attach buildlog when the build is not successfull
+    def attachLog = (config.attachLog != null) ? config.attachLog : (currentBuild.result != "SUCCESS") // Attach buildlog when the build is not successfull
 
     // Allways send a mail to the requestor (the one who started the job)
     def to = []
     to << emailextrecipients([[$class: 'RequesterRecipientProvider']])
 
     // Append email recipients given by user
-    if (params.emailRecipients != null) {
-        to << params.emailRecipients
+    if (config.emailRecipients != null) {
+        to << config.emailRecipients
     }
 
     // Append Culprits when the build is not successfull
