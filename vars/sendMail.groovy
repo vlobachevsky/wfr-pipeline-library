@@ -2,7 +2,7 @@
 /**
  * sendMail.groovy
  *
- * This function will use emailext to send an email
+ * This function will use emailext (https://wiki.jenkins.io/display/JENKINS/Email-ext+plugin) to send an email
  * - An email will always be send to the requestor (the one who started the job)
  * - In case of a failure the email will be send to the curlprits
  *
