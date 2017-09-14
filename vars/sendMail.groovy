@@ -38,7 +38,10 @@ def call(Map params = [:]) {
     to = to.join(',')
 
     // Send email
+//    emailext(body: content, mimeType: 'text/html',
+//            replyTo: '$DEFAULT_REPLYTO', subject: subject,
+//            to: to, attachLog: attachLog )
     emailext(body: content, mimeType: 'text/html',
-            replyTo: '$DEFAULT_REPLYTO', subject: subject,
+            replyTo: '$DEFAULT_REPLYTO', subject: '${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!',
             to: to, attachLog: attachLog )
 }
