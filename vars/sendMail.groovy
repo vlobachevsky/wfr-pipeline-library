@@ -13,6 +13,7 @@
  */
 
 def call(Map params = [:]) {
+    def to = params.to ?: '${DEFAULT_REPLYTO}'
     def subject = params.subject ?: '${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!'
 
 //    def content = '${JELLY_SCRIPT,template="static-analysis"}'
@@ -21,24 +22,13 @@ def call(Map params = [:]) {
 //    def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.currentResult != "SUCCESS") // Attach buildlog when the build is not successfull
     def attachLog = params.attachLog ?: (currentBuild.currentResult != "SUCCESS") // Attach buildlog when the build is not successfull
 
-    // Allways send a mail to the requestor (the one who started the job)
-    def to = []
-    to << emailextrecipients([[$class: 'RequesterRecipientProvider']])
-
-    // Append email recipients given by user
-    if (params.emailRecipients != null) {
-        to << params.emailRecipients
-    }
-
-    // Append Culprits when the build is not successfull
-    if (currentBuild.result != "SUCCESS") {
-        to << emailextrecipients([[$class: 'CulpritsRecipientProvider']])
-    }
-
-    to = to.join(',')
-
     // Send email
-    emailext(body: body, mimeType: 'text/html',
-            replyTo: '${DEFAULT_REPLYTO}', subject: subject,
-            to: to, attachLog: attachLog )
+    emailext(
+        body: body,
+        mimeType: 'text/html',
+        replyTo: '${DEFAULT_REPLYTO}',
+        subject: subject,
+        to: to,
+        attachLog: attachLog
+    )
 }
