@@ -13,13 +13,14 @@
  */
 
 def call(Map params = [:]) {
-//    def subject = params.subject ? params.subject : "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result}!"
+    def buildResult = currentBuild.result
+    echo "Current Build Result: ${buildResult}"
 
     def subject = params.subject ?: '${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!'
 
 //    def content = '${JELLY_SCRIPT,template="static-analysis"}'
 //    def content = '<p>${DEFAULT_REPLYTO}</p><p>${JELLY_SCRIPT,template="html"}</p><p>${FAILED_TESTS}</p>'
-    def content = params.content ?: '${DEFAULT_CONTENT}'
+    def body = params.body ?: '${DEFAULT_CONTENT}'
     def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.result != "SUCCESS") // Attach buildlog when the build is not successfull
 
     // Allways send a mail to the requestor (the one who started the job)
@@ -39,7 +40,7 @@ def call(Map params = [:]) {
     to = to.join(',')
 
     // Send email
-    emailext(body: content, mimeType: 'text/html',
+    emailext(body: body, mimeType: 'text/html',
             replyTo: '${DEFAULT_REPLYTO}', subject: subject,
             to: to, attachLog: attachLog )
 }
