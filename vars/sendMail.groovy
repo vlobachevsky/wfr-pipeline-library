@@ -13,6 +13,7 @@
  */
 
 def call(Map params = [:]) {
+/*
     def subject = params.subject ? params.subject : "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result}!"
     def content = '${JELLY_SCRIPT,template="static-analysis"}'
     def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.result != "SUCCESS") // Attach buildlog when the build is not successfull
@@ -37,4 +38,5 @@ def call(Map params = [:]) {
     emailext(body: content, mimeType: 'text/html',
             replyTo: '$DEFAULT_REPLYTO', subject: subject,
             to: to, attachLog: attachLog )
+*/
 }
