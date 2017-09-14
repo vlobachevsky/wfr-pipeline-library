@@ -5,7 +5,7 @@
 def call(Map params = [:]) {
     assert params.url
 
-    def url = params.url ?: infra.getSVNRootURL() + '/' + params.url
+    def url = infra.getSVNRootURL() + params.url
     def credentialsId = params.credentialsId ?: infra.getSVNCredentialsId()
     def localDir = params.localDir ?: '.'
     def depthOption = params.depthOption ?: 'infinity'
