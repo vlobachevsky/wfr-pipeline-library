@@ -13,7 +13,7 @@
  */
 
 def call(Map params = [:]) {
-    def to = params.to ?: '${DEFAULT_REPLYTO}'
+    def to = params.to ?: '${env.PROJECT_RECIPIENT_LIST}'
     def subject = params.subject ?: '${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!'
 
 //    def content = '${JELLY_SCRIPT,template="static-analysis"}'
