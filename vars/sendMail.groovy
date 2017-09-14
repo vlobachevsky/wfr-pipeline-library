@@ -17,7 +17,7 @@ def call(Map params = [:]) {
 
     def subject = params.subject ? params.subject : "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result}!"
 //    def content = '${JELLY_SCRIPT,template="static-analysis"}'
-    def content = '<p>${JELLY_SCRIPT,template="html"}</p><p>${FAILED_TESTS}</p>'
+    def content = '<p>${DEFAULT_REPLYTO}</p><p>${JELLY_SCRIPT,template="html"}</p><p>${FAILED_TESTS}</p>'
     def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.result != "SUCCESS") // Attach buildlog when the build is not successfull
 
     // Allways send a mail to the requestor (the one who started the job)
