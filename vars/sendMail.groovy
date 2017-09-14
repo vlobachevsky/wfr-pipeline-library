@@ -18,7 +18,8 @@ def call(Map params = [:]) {
 //    def content = '${JELLY_SCRIPT,template="static-analysis"}'
 //    def content = '<p>${DEFAULT_REPLYTO}</p><p>${JELLY_SCRIPT,template="html"}</p><p>${FAILED_TESTS}</p>'
     def body = params.body ?: '${DEFAULT_CONTENT}'
-    def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.currentResult != "SUCCESS") // Attach buildlog when the build is not successfull
+//    def attachLog = (params.attachLog != null) ? params.attachLog : (currentBuild.currentResult != "SUCCESS") // Attach buildlog when the build is not successfull
+    def attachLog = params.attachLog ?: (currentBuild.currentResult != "SUCCESS") // Attach buildlog when the build is not successfull
 
     // Allways send a mail to the requestor (the one who started the job)
     def to = []
