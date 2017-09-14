@@ -3,8 +3,10 @@
 // vars/checkoutSVN.groovy
 
 def call(Map params = [:]) {
+    assert params.url
+
+    def url = params.url ?: infra.getSVNRootURL() + '/' + params.url
     def credentialsId = params.credentialsId ?: infra.getSVNCredentialsId()
-    def url = params.url
     def localDir = params.localDir ?: '.'
     def depthOption = params.depthOption ?: 'infinity'
 
