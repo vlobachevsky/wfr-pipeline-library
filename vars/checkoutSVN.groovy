@@ -27,7 +27,7 @@ def call(Map params = [:]) {
         local: "$localDir",
         remote: "$url"
       ]],
-      workspaceUpdater: [$class: 'UpdateWithRevertUpdater']
+      workspaceUpdater: [$class: 'UpdateWithCleanUpdater']
     ])
 
 }
