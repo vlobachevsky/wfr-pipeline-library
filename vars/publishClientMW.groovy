@@ -7,5 +7,5 @@ def call(Map params = [:]) {
     writeFile file: "${propertyfile}", text: "client.release.dir=${params.repo}"
 //    bat "ant -propertyfile='${propertyfile}' PackageClientMW"
     bat "dir"
-    bat "ant -propertyfile='${env.WORKSPACE}/${propertyfile}' Test"
+    bat "ant -propertyfile=build_client_mw.properties Test"
 }
