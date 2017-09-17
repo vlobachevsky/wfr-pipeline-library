@@ -2,5 +2,11 @@
 
 def call(Map params = [:]) {
     assert params.repo
-    bat "ant -Dclient.release.dir=${params.repo} PackageClientMW"
+
+    def propertyfile = 'build_client_mw.properties'
+    writeFile {
+        file: "${propertyfile}"
+        text: "client.release.dir=${params.repo}"
+    }
+    bat "ant -propertyfile='${propertyfile}' -Dclient.release.dir=${params.repo} PackageClientMW"
 }
