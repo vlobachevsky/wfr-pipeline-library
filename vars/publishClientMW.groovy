@@ -1,10 +1,7 @@
 #!/usr/bin/env groovy
 
-def call(Map params = [:]) {
-    assert params.repo
+    def call(Map params = [:]) {
+        assert params.repo
 
-    def path = params.repo.replace("\\", "\\\\")
-    def propertyfile = 'build_client_mw.properties'
-    writeFile file: "${propertyfile}", text: "client.release.dir=${path}"
-    bat "ant -f PunchMW/build.xml -propertyfile=${propertyfile} PackageClientMW"
-}
+        bat "ant -f PunchMW/build.xml -DpackageTo='${repo}' PackageClientMW"
+    }
